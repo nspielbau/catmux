@@ -2,7 +2,7 @@
 parameters:
   # Parameters specified here can be used below and they can be overwritten at runtime
   show_layouts: false # This parameter is used together with the if flag below
-  conditional_command: false
+  print_additional_intro: false
   replacement_param: world\! # Parameters can also be used as replacement templates
 
 common:
@@ -11,7 +11,7 @@ common:
   #   - ssh-ing to another machine
   before_commands:
     - echo "This is a catmux window :)" # before commands can be specified global and per window
-    - if: conditional_command
+    - if: print_additional_intro
       command: echo "This is conditional"
 
   # The default window will be the one displayed when first connecting to the tmux session
