@@ -23,32 +23,8 @@
 # SOFTWARE.
 # -- END LICENSE BLOCK ------------------------------------------------
 
-"""A split in a tmux session"""
-
-import libtmux
-
-from catmux.utils import parse_commands
+"""General utility functions for catmux"""
 
 
-class Split(object):
-
-    """A split is a pane where commands can be executed"""
-
-    def __init__(self, *args):
-        """TODO: to be defined1."""
-        self.commands = list()
-
-        if args is not None:
-            self.commands = parse_commands(args)
-
-    def debug(self, name="", prefix=""):
-        """Prints all information about this window"""
-        print(prefix + "- Split " + name + ":")
-        if hasattr(self, "commands"):
-            print(prefix + "  commands: ")
-            print("\t- " + "\n\t- ".join(getattr(self, "commands")))
-
-    def run(self, parent_pane: libtmux.Pane):
-        "Executes all configured commands" ""
-        for command in self.commands:
-            parent_pane.send_keys(command)
+def parse_commands(command_list):
+    return command_list

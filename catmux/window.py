@@ -42,9 +42,7 @@ class Window(object):
         split_list = kwargs.pop("splits", None)
         if not split_list:
             if "commands" in kwargs:
-                split_dict = dict()
-                split_dict["commands"] = kwargs.pop("commands")
-                split_list = [split_dict]
+                split_list = [kwargs.pop("commands")]
             else:
                 raise InvalidConfig(
                     f"No splits and no commands given for window '{kwargs['name']}'."
@@ -54,7 +52,7 @@ class Window(object):
 
         self.splits = list()
         for split_data in split_list:
-            self.splits.append(Split(**split_data))
+            self.splits.append(Split(*split_data["commands"]))
 
         if kwargs is not None:
             for (key, value) in kwargs.items():

@@ -28,6 +28,7 @@ import re
 import libtmux
 import yaml
 
+from catmux.utils import parse_commands
 from catmux.window import Window
 import catmux.exceptions as cme
 
@@ -101,7 +102,7 @@ class Session(object):
         if "common" in self.__yaml_data and self.__yaml_data["common"]:
             common = self.__yaml_data["common"]
             if "before_commands" in common and common["before_commands"]:
-                self._before_commands = common["before_commands"]
+                self._before_commands = parse_commands(common["before_commands"])
 
             if "default_window" in common and common["default_window"]:
                 self._default_window = common["default_window"]
