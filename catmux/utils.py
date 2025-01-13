@@ -26,5 +26,5 @@
 """General utility functions for catmux"""
 
 
-def parse_commands(command_list):
-    return command_list
+def parse_commands(command_dict, key):
+    return command_dict[key]

@@ -30,6 +30,7 @@ import libtmux
 
 from catmux.split import Split
 from catmux.exceptions import InvalidConfig
+from catmux.utils import parse_commands
 
 
 class Window(object):
@@ -40,19 +41,20 @@ class Window(object):
         """TODO: to be defined1."""
 
         split_list = kwargs.pop("splits", None)
-        if not split_list:
-            if "commands" in kwargs:
-                split_list = [kwargs.pop("commands")]
-            else:
-                raise InvalidConfig(
-                    f"No splits and no commands given for window '{kwargs['name']}'."
-                )
-
-        print(split_list)
+        split_command_list = list()
+        if split_list:
+            for split_data in split_list:
+                split_command_list.append(parse_commands(split_data, "commands"))
+        elif not split_list and "commands" in kwargs:
+            split_command_list.append(parse_commands(kwargs, "commands"))
+        else:
+            raise InvalidConfig(
+                f"No splits and no commands given for window '{kwargs['name']}'."
+            )
 
         self.splits = list()
-        for split_data in split_list:
-            self.splits.append(Split(*split_data["commands"]))
+        for split_data in split_command_list:
+            self.splits.append(Split(*split_data))
 
         if kwargs is not None:
             for (key, value) in kwargs.items():

@@ -39,7 +39,7 @@ class Split(object):
         self.commands = list()
 
         if args is not None:
-            self.commands = parse_commands(args)
+            self.commands = args
 
     def debug(self, name="", prefix=""):
         """Prints all information about this window"""
