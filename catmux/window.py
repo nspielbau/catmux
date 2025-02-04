@@ -54,7 +54,7 @@ class Window(object):
 
         self.splits = list()
         for split_data in split_command_list:
-            self.splits.append(Split(*split_data))
+            self.splits.append(Split(split_data))
 
         if kwargs is not None:
             for (key, value) in kwargs.items():

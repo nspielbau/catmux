@@ -34,12 +34,12 @@ class Split(object):
 
     """A split is a pane where commands can be executed"""
 
-    def __init__(self, *args):
+    def __init__(self, commands):
         """TODO: to be defined1."""
         self.commands = list()
 
-        if args is not None:
-            self.commands = args
+        if commands is not None:
+            self.commands = commands
 
     def debug(self, name="", prefix=""):
         """Prints all information about this window"""
