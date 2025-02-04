@@ -54,7 +54,10 @@ class Window(object):
 
         self.splits = list()
         for split_data in split_command_list:
-            self.splits.append(Split(split_data))
+            if hasattr(split_data, "__iter__"):
+                self.splits.append(Split(split_data))
+            else:
+                print("Split is empty, dropping")
 
         if kwargs is not None:
             for (key, value) in kwargs.items():
