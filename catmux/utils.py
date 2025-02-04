@@ -1,7 +1,7 @@
 # -- BEGIN LICENSE BLOCK ----------------------------------------------
 
 # catmux
-# Copyright (C) 2018  Felix Mauch
+# Copyright (C) 2025  Felix Exner
 # MIT License
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
